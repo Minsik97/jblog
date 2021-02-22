@@ -15,19 +15,23 @@
 	<div id="wrap">
 
 		<!-- 개인블로그 해더 -->
-		<c:import url="/WEB-INF/views/includes/blog-header.jsp"></c:import>
+		<c:import url="/WEB-INF/views/include/blog-header.jsp"></c:import>
 		
 		<div id="content" class="clearfix">
 			<div id="profilecate_area">
 				<div id="profile">
 					
 					<!-- 기본이미지 -->
-					<img id="proImg" src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
-					
-					<!-- 사용자업로드 이미지 -->
-					<%-- <img id="proImg" src=""> --%>
-					
-					<div id="nick">정우성(hijava)님</div>
+					<c:choose>
+	      				<c:when test="${blogVo.logoFile == null }">
+	      					<img id="proImg" src="${pageContext.request.contextPath}/assets/image/spring-logo.jpg">
+	      				</c:when>
+	      				<c:otherwise>
+	      					<img id="proImg" src="${pageContext.request.contextPath}/assets/image/upload/${blogVo.logoFile}">
+	      				</c:otherwise>
+	      			</c:choose>
+	      			
+					<div id="nick">${blogVo.userName}(${blogVo.id})님</div>
 				</div>
 				<div id="cate">
 					<div class="text-left">
@@ -116,7 +120,7 @@
 		</div>	
 		<!-- //content -->
 		<div class=></div>
-		<c:import url="/WEB-INF/views/includes/blog-footer.jsp"></c:import>
+		<c:import url="/WEB-INF/views/include/blog-footer.jsp"></c:import>
 		
 	
 	

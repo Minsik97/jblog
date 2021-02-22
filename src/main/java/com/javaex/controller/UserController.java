@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.javaex.dao.BlogDao;
 import com.javaex.service.UserService;
 import com.javaex.vo.UserVo;
 
@@ -17,8 +18,8 @@ import com.javaex.vo.UserVo;
 public class UserController {
 	
 	
-	 @Autowired public UserService userService;
-	 
+	 @Autowired 
+	 private UserService userService;
 	
 	//회원가입 폼
 	@RequestMapping(value = "/joinForm", method = {RequestMethod.GET, RequestMethod.POST})
